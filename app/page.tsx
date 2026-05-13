@@ -24,19 +24,27 @@ export default function Home() {
             </p>
           </a>
 
-          <div className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm">
+          <a
+            href="/learn"
+            className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
+          >
             <h2 className="font-semibold">Learn</h2>
             <p className="mt-2 text-sm text-stone-600">
               Keep notes, duas, and flashcards in one place.
             </p>
-          </div>
+          </a>
 
-          <div className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm">
+
+          <a
+            href="/jamaat"
+            className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
+          >
             <h2 className="font-semibold">Jamaat Mode</h2>
             <p className="mt-2 text-sm text-stone-600">
               Optional routines for khurooj, schedules, and reflections.
             </p>
-          </div>
+           </a>
+
         </div>
       </section>
     </main>
