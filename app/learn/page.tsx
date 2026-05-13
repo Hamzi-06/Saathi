@@ -1,3 +1,7 @@
+"use client";
+
+import { useEffect, useState } from "react";
+
 const flashcards = [
   {
     question: "What is one daily action that keeps the heart connected?",
@@ -13,7 +17,24 @@ const flashcards = [
   },
 ];
 
+const notesStorageKey = "saathi-learn-notes";
+
 export default function LearnPage() {
+  const [notes, setNotes] = useState("");
+
+  useEffect(() => {
+    const savedNotes = localStorage.getItem(notesStorageKey);
+
+    if (savedNotes) {
+      setNotes(savedNotes);
+    }
+  }, []);
+
+  function updateNotes(nextNotes: string) {
+    setNotes(nextNotes);
+    localStorage.setItem(notesStorageKey, nextNotes);
+  }
+
   return (
     <main className="min-h-screen bg-stone-50 px-6 py-10 text-stone-900">
       <section className="mx-auto max-w-4xl">
@@ -42,6 +63,8 @@ export default function LearnPage() {
             <textarea
               id="notes"
               rows={10}
+              value={notes}
+              onChange={(event) => updateNotes(event.target.value)}
               placeholder="Write a short note, dua, reminder, or lesson..."
               className="mt-2 w-full rounded-md border border-stone-300 p-3 text-sm outline-none focus:border-emerald-600"
             />
