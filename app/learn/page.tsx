@@ -21,6 +21,7 @@ const notesStorageKey = "saathi-learn-notes";
 
 export default function LearnPage() {
   const [notes, setNotes] = useState("");
+  const [visibleAnswerIndex, setVisibleAnswerIndex] = useState<number | null>(null);
 
   useEffect(() => {
     const savedNotes = localStorage.getItem(notesStorageKey);
@@ -74,17 +75,25 @@ export default function LearnPage() {
             <h2 className="text-lg font-semibold">Flashcards</h2>
 
             <div className="mt-4 space-y-4">
-              {flashcards.map((card) => (
-                <div
-                  key={card.question}
-                  className="rounded-md border border-stone-200 p-4"
-                >
-                  <p className="text-sm font-semibold text-stone-900">
-                    {card.question}
-                  </p>
-                  <p className="mt-2 text-sm text-stone-600">{card.answer}</p>
-                </div>
-              ))}
+              {flashcards.map((card, index) => {
+                const isAnswerVisible = visibleAnswerIndex === index;
+
+                return (
+                  <div key={card.question} className="rounded-md border border-stone-200 p-4">
+                    <p className="text-sm font-semibold text-stone-900">{card.question}</p>
+
+                    {isAnswerVisible && <p className="mt-2 text-sm text-stone-600">{card.answer}</p>}
+
+                    <button
+                      type="button"
+                      onClick={() => setVisibleAnswerIndex(isAnswerVisible ? null : index)}
+                      className="mt-3 rounded-md bg-emerald-700 px-3 py-2 text-sm font-medium text-white hover:bg-emerald-800"
+                    >
+                      {isAnswerVisible ? "Hide answer" : "Show answer"}
+                    </button>
+                  </div>
+                );
+              })}
             </div>
           </section>
         </div>
