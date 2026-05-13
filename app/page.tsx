@@ -6,9 +6,7 @@ export default function Home() {
           Daily Muslim Companion
         </p>
 
-        <h1 className="text-4xl font-bold sm:text-6xl">
-          Saathi
-        </h1>
+        <h1 className="text-4xl font-bold sm:text-6xl">Saathi</h1>
 
         <p className="mt-6 max-w-2xl text-lg leading-8 text-stone-700">
           A simple daily companion for prayer, a&apos;maal, learning, notes,
@@ -16,12 +14,15 @@ export default function Home() {
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-3">
-          <div className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm">
+          <a
+            href="/today"
+            className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm transition hover:border-emerald-300 hover:shadow-md"
+          >
             <h2 className="font-semibold">Today</h2>
             <p className="mt-2 text-sm text-stone-600">
               Track your daily a&apos;maal and reminders.
             </p>
-          </div>
+          </a>
 
           <div className="rounded-lg border border-stone-200 bg-white p-5 shadow-sm">
             <h2 className="font-semibold">Learn</h2>
